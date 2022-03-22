@@ -1,15 +1,26 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 from django.http import HttpResponse
-from .serializers import MarkdownImageSerializer
-from .models import MarkdownImage
+from .serializers import MarkdownSerializer
+from .models import Markdown
 
-class MMarkdownViewSet(viewsets.ModelViewSet):
-    queryset = MarkdownImage.objects.all()
-    serializer_class = MarkdownImageSerializer
+
+class MarkdownViewSet(viewsets.ModelViewSet):
+    queryset = Markdown.objects.all()
+    serializer_class = MarkdownSerializer
 
     def post(self, request, *args, **kwargs):
-        img = request.data['img']
         title = request.data['title']
-        MarkdownImage.objects.create(title=title, img=img)
-        return HttpResponse({'message':'New markdownImage created'},status=200)
+        overview = request.data['overview']
+        category = request.data['category']
+        author = request.data['author']
+        # img = request.data['img']
+        text = request.data['text']
+
+
+        Markdown.objects.create(
+            title=title, overview=overview, category=category,
+            author=author, text=text
+        )
+        return HttpResponse(
+            {'message': 'New markdown created'}, status=200)

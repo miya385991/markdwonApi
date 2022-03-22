@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import MarkdownImage
+from .models import Markdown
 
-class MarkdownImageSerializer(serializers.HyperlinkedModelSerializer):
+class MarkdownSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = MarkdownImage
-        fields = ['id', 'title', 'img']
+        model = Markdown
+        fields = ['id', 'title', 'overview', 'category', 'author',  'created', 'updated', 'text']

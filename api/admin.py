@@ -1,6 +1,6 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import MarkdownImage
+from .models import Markdown
 
-admin.site.register(MarkdownImage)
+admin.site.register(Markdown)

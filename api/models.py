@@ -1,14 +1,22 @@
 from django.db import models
+from datetime import datetime
 # Create your models here.
 
-def load_path(instance, filename):
-    return '/'.join(['image', str(instance.title)+str('.jpg')])
+def load_path(instans,failename):
+    now = datetime.now()
+    return '/'.join(['image', str(now)+str('.jpg')])
 
-class MarkdownImage(models.Model):
+class Markdown(models.Model):
     title = models.CharField(max_length=30, blank=False)
-    img = models.ImageField(blank=True, null=True, upload_to=load_path)
-    created = models.DateTimeField(auto_now_add=True, verbose_name="投稿日時")
-    updated = models.DateTimeField(auto_now=True, verbose_name="更新日")
+    overview = models.CharField(max_length=100, blank=False)
+    category = models.CharField(max_length=30, blank=False)
+    author = models.CharField(max_length=30, blank=False)
+    # img = models.ImageField(blank=False, null=True, upload_to=load_path)
+    text = models.TextField(null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+
