@@ -1,10 +1,14 @@
 from django.db import models
 from datetime import datetime
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import User
+from django.conf import settings
 # Create your models here.
 
 def load_path(instans,failename):
+    ext = failename.split(',')[-1]
     now = datetime.now()
-    return '/'.join(['image', str(now)+str('.jpg')])
+    return '/'.join(['image', str(now)+str(ext)])
 
 class Markdown(models.Model):
     title = models.CharField(max_length=30, blank=False)
@@ -18,5 +22,3 @@ class Markdown(models.Model):
 
     def __str__(self):
         return self.title
-
-
