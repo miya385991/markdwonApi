@@ -1,4 +1,4 @@
 # markdwonApi
 markdown-blogのapiを作成
 
-- markdwon-blogのAPIをさくせしました。
+- markdwon-blogのAPIを作成しました。
